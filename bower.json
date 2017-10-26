@@ -1,23 +1,23 @@
 {
-  "name": "yida",
-  "private": true,
-  "dependencies": {
-    "zepto": "^1.2.0",
-    "bulma": "^0.6.0",
-    "font-awesome": "font-awsome#^4.7.0"
-  },
-  "devDependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^3.4.1"
-  },
-  "overrides": {
-    "bulma": {
-      "main": [
-        "./css/bulma.css"
-      ]
+    "name": "yida",
+    "private": true,
+    "dependencies": {
+        "zepto": "^1.2.0",
+        "font-awesome": "font-awsome#^4.7.0",
+        "bulma": "^0.6.0"        
     },
-    "font-awesome": {
-      "main": ["./css/font-awesome.min.css"]
+    "devDependencies": {
+        "chai": "^3.5.0",
+        "mocha": "^3.4.1"
+    },
+    "overrides": {
+        "font-awesome": {
+            "main": ["./css/font-awesome.min.css"]
+        },
+        "bulma": {
+            "main": [
+                "./css/bulma.css"
+            ]
+        }
     }
-  }
 }
