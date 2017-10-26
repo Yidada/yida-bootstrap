@@ -12,6 +12,14 @@ const reload = browserSync.reload;
 
 var dev = true;
 
+function lint(files) {
+    return gulp.src(files)
+        .pipe($.eslint({ fix: true }))
+        .pipe(reload({ stream: true, once: true }))
+        .pipe($.eslint.format())
+        .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
+}
+
 gulp.task('styles', () => {
     return gulp.src('app/styles/*.less')
         .pipe($.plumber())
@@ -33,18 +41,11 @@ gulp.task('scripts', () => {
         .pipe(reload({ stream: true }));
 });
 
-function lint(files) {
-    return gulp.src(files)
-        .pipe($.eslint({ fix: true }))
-        .pipe(reload({ stream: true, once: true }))
-        .pipe($.eslint.format())
-        .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
-}
-
 gulp.task('lint', () => {
     return lint('app/scripts/**/*.js')
         .pipe(gulp.dest('app/scripts'));
 });
+
 gulp.task('lint:test', () => {
     return lint('test/spec/**/*.js')
         .pipe(gulp.dest('test/spec'));
@@ -53,6 +54,7 @@ gulp.task('lint:test', () => {
 gulp.task('html', ['styles', 'scripts'], () => {
     return gulp.src('app/*.html')
         .pipe($.useref({ searchPath: ['.tmp', 'app', '.'] }))
+        .pipe(using())
         .pipe($.if(/\.js$/, $.uglify({ compress: { drop_console: true } })))
         .pipe($.if(/\.css$/, $.cssnano({ safe: true, autoprefixer: false })))
         .pipe($.if(/\.html$/, $.htmlmin({

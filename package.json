@@ -36,7 +36,6 @@
         "gulp-using": "^0.1.1",
         "main-bower-files": "^2.5.0",
         "run-sequence": "^1.2.2",
-        "through2": "^2.0.3",
         "wiredep": "^4.0.0"
     },
     "eslintConfig": {
@@ -47,12 +46,9 @@
         },
         "rules": {
             "quotes": [
-                2,
+                4,
                 "single"
             ]
         }
-    },
-    "dependencies": {
-        "san": "^3.2.8"
     }
 }
