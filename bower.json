@@ -1,11 +1,23 @@
 {
-  "name": "nice-61",
+  "name": "yida",
   "private": true,
   "dependencies": {
-    "zepto": "^1.2.0"
+    "zepto": "^1.2.0",
+    "bulma": "^0.6.0",
+    "font-awesome": "font-awsome#^4.7.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.4.1"
+  },
+  "overrides": {
+    "bulma": {
+      "main": [
+        "./css/bulma.css"
+      ]
+    },
+    "font-awesome": {
+      "main": ["./css/font-awesome.min.css"]
+    }
   }
 }
